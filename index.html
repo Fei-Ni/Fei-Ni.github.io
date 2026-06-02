@@ -1,513 +1,798 @@
-
 <!DOCTYPE html>
-<!-- saved from url=(0040)http://artemsheludko.pw/flexible-jekyll/ -->
 <html lang="en">
-
-
-	
 <head>
-	
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?1833684faf5f254c1bb31386c5780c57";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fei Ni — 倪飞</title>
+  <link rel="shortcut icon" href="img/fei.jpg">
+  <meta name="description" content="Fei Ni — Research Associate at Imperial College London. Vision-Language-Action models, robotic manipulation, diffusion policies, meta reinforcement learning.">
+  <meta name="keywords" content="Fei Ni, Imperial College London, VLA, Robotic Manipulation, Diffusion, Reinforcement Learning, Tianjin University">
+  <meta name="google-site-verification" content="yy_3iiS_X6pJdegdwitJMrH0LRLHXwpjrV9RKLXxKjg">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --link: #2563eb;
+      --link-hover: #1d4ed8;
+      --accent: #b91c1c;
+      --soft: #f9fafb;
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+    h1, h2, h3 { margin: 0; font-weight: 600; }
+    h2 {
+      font-size: 1.35rem;
+      margin: 48px 0 16px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    h2 .small {
+      font-size: 0.7em;
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 6px;
+    }
 
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Fei Ni-倪飞</title>
-        <link rel="shortcut icon" href="img/fei.jpg"/>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<meta name="keywords" content="Fei Ni, EIC, TJU, Tianjin University">
-	<meta name="description" content="Fei Ni's home page">
-	<meta name="google-site-verification" content="yy_3iiS_X6pJdegdwitJMrH0LRLHXwpjrV9RKLXxKjg" />
-	<meta name="google-site-verification" content="yy_3iiS_X6pJdegdwitJMrH0LRLHXwpjrV9RKLXxKjg" />
-	<link rel="stylesheet" href="./css/jemdoc.css">
-	<title>Fei Ni, Tianjin University</title>
+    /* hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 32px;
+      align-items: center;
+    }
+    .hero h1 { font-size: 2rem; margin-bottom: 4px; letter-spacing: -0.01em; }
+    .hero h1 .cn { color: var(--muted); font-weight: 400; margin-left: 8px; }
+    .hero .role { color: var(--muted); margin-bottom: 14px; }
+    .hero p { margin: 0 0 12px; }
+    .hero .photo {
+      width: 200px;
+      height: 240px;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: center top;
+      box-shadow: var(--shadow);
+    }
+    .contacts {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 12px 0 18px;
+    }
+    .contacts a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+    .contacts a:hover { color: var(--link); text-decoration: none; }
+    .contacts svg { width: 18px; height: 18px; }
+
+    /* news */
+    .news { list-style: none; padding: 0; margin: 0; }
+    .news li {
+      padding: 8px 0;
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .news li:last-child { border-bottom: none; }
+    .news .date {
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.92rem;
+      padding-top: 1px;
+    }
+    .news li.more { display: none; }
+    .news.expanded li.more { display: grid; }
+    .news-toggle {
+      display: inline-block;
+      margin-top: 12px;
+      cursor: pointer;
+      color: var(--link);
+      font-size: 0.9rem;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .news-toggle:hover { text-decoration: underline; }
+
+    /* publications */
+    .pub {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub:not(:has(> .thumb)) {
+      grid-template-columns: 1fr;
+      padding: 12px 0;
+    }
+    .pub:last-child { border-bottom: none; }
+    .pub .thumb {
+      width: 200px;
+      height: 120px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: var(--soft);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease;
+    }
+    .pub:hover .thumb { transform: translateY(-2px); }
+    .pub .title {
+      font-weight: 600;
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .pub .title:hover { color: var(--link); }
+    .pub .authors {
+      font-size: 0.92rem;
+      margin: 4px 0;
+    }
+    .pub .venue {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 4px 0;
+    }
+    .pub .me { font-weight: 700; }
+    .pub .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-style: normal;
+      padding: 1px 8px;
+      border-radius: 4px;
+      background: #fee2e2;
+      color: #b91c1c;
+      margin-left: 4px;
+      vertical-align: middle;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .pub .badge.oral { background: #ede9fe; color: #6d28d9; }
+    .pub .badge.sci { background: #ecfeff; color: #0e7490; }
+    .pub .links {
+      margin-top: 8px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .pub .links a {
+      font-size: 0.8rem;
+      padding: 2px 10px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      transition: all 0.15s ease;
+    }
+    .pub .links a:hover {
+      background: var(--link);
+      color: white;
+      text-decoration: none;
+      border-color: var(--link);
+    }
+    .featured {
+      background: linear-gradient(135deg, #fff7ed 0%, #fffbeb 60%, transparent 100%);
+      border-radius: 10px;
+      padding: 18px 14px;
+      margin: 8px -14px;
+      border-bottom: none;
+    }
+    .featured + .featured { margin-top: 0; }
+    .year-header {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 22px 0 0;
+    }
+
+    /* timeline (awards / experience / talks) */
+    .timeline { padding: 0; list-style: none; margin: 0; }
+    .timeline li {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .timeline li:last-child { border-bottom: none; }
+    .timeline .when {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .timeline .what strong { font-weight: 600; }
+    .timeline .what .sub { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+    .timeline li.more { display: none; }
+    .timeline.expanded li.more { display: grid; }
+    .publications .pub.more,
+    .publications .year-header.more { display: none; }
+    .publications.expanded .pub.more { display: grid; }
+    .publications.expanded .year-header.more { display: block; }
+    .toggle-btn {
+      display: inline-block;
+      margin-top: 12px;
+      cursor: pointer;
+      color: var(--link);
+      font-size: 0.9rem;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .toggle-btn:hover { text-decoration: underline; }
+
+    /* footer */
+    footer {
+      text-align: center;
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--muted); }
+
+    /* responsive */
+    @media (max-width: 720px) {
+      .wrap { padding: 28px 18px 48px; }
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero .photo {
+        margin: 0 auto;
+        width: 160px;
+        height: 200px;
+        order: -1;
+      }
+      .contacts { justify-content: center; }
+      .pub, .news li, .timeline li {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .pub .thumb { width: 100%; height: 180px; }
+      .news .date, .timeline .when { padding-top: 0; }
+      .featured { margin: 8px 0; padding: 14px; }
+    }
+  </style>
 </head>
-
 <body>
- <div id="layout-content" style="margin-top:25px">
- <a href="https://github.com/Fei-Ni" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250"
- style="fill:#0000FF; color:#fff; position: absolute; top: 0; border: 0; right: 0;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z">
- </path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,
- 87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
- <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 
- 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,
- 77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,
- 116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
- <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,
- 60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px)
- {.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-	
-	
-	
-	
-<table>
-	<tbody>
-		<tr>
-			<td width="670">
-				<div id="toptitle">					
-					<h1>Fei Ni &nbsp 倪飞 </h1><h1>
-				</h1></div>
+  <div class="wrap">
 
-				<h3> Research Associate </h3>
-				<p>
-					 I am a PostDoc at Imperial College London, working with Jiankang Deng and Stefanos Zafeiriou.
-					 Previously, I was a Ph.D. student at the TJURLLab in Tianjin University, supervised by Jianye Hao. My research interests include Meta Reinforcement Learning, Diffusion Models, Multimodal Robotics.
-				
-				</p>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div>
+        <h1>Fei Ni<span class="cn">倪飞</span></h1>
+        <div class="role">MSCA Postdoctoral Fellow · Imperial College London</div>
+        <div class="contacts">
+          <a href="mailto:f.ni@imperial.ac.uk" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+            f.ni@imperial.ac.uk
+          </a>
+          <a href="https://scholar.google.com.hk/citations?user=qCXW6sYAAAAJ&hl=zh-CN" title="Google Scholar">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 9l4 2.18v6L12 22l7-4.82v-6l2-1.09V17h2V9L12 2z"/></svg>
+            Google Scholar
+          </a>
+        </div>
+        <p>
+          I am a Marie Skłodowska-Curie Actions (MSCA) Postdoctoral Fellow and Research Associate at
+          <a href="https://www.imperial.ac.uk/">Imperial College London</a>, working with
+          <a href="https://www.imperial.ac.uk/people/s.zafeiriou">Prof. Stefanos Zafeiriou</a>,
+          supported by the European Union's Horizon Europe programme.
+          Before that, I obtained my Ph.D. from <a href="http://english.tju.edu.cn/">Tianjin University</a>
+          under the supervision of <a href="http://www.icdai.org/">Prof. Jianye Hao</a>,
+          and my Master's and Bachelor's degrees from <a href="http://english.hust.edu.cn/">Huazhong University of Science and Technology</a>,
+          supervised by <a href="http://faculty.hust.edu.cn/hekun/en/">Prof. Kun He</a>.
+        </p>
+        <p>
+          My research lies at the intersection of <strong>Embodied Intelligence</strong>,
+          <strong>Multimodal Large Models</strong>, and <strong>Reinforcement Learning</strong>.
+          I am especially interested in
+          <em>vision-language-action models</em>,
+          <em>long-horizon robotic manipulation</em>,
+          <em>generalist embodied agents</em>,
+          <em>diffusion-based decision making</em>,
+          and <em>benchmarks &amp; evaluation for embodied AI</em> —
+          with the broader goal of bridging large language models with robotic control
+          to develop generalizable approaches for embodied intelligence in the real world.
+        </p>
+        <p>
+          I am always happy to discuss research and explore potential collaborations —
+          feel free to reach out via <a href="mailto:f.ni@imperial.ac.uk">email</a>.
+        </p>
+      </div>
+      <img class="photo" src="img/fei.jpg" alt="Fei Ni">
+    </section>
 
-				<p>
-<!-- 					1037 Luoyu Road,<br>
-					National Anti-counterfeit Engineering Research Center,<br>
-					Huazhong University of Science and Technology (HUST), <br>
-					Wuhan, China, 430074 <br>
-					<br> -->
-					Email:  f.ni@imperial.ac.uk
- 					       
-				</p>
-				<p>     
-					
-					<!-- <a href="paper/CV.pdf"><img src="img/cv_p.jpg"  height="40px" style="margin-bottom:-3px"></a> -->
-					<a href="https://github.com/Fei-Ni"><img src="img/github.jpg" height="40px" style="margin-bottom:-3px"></a>
-					<a href="https://scholar.google.com.hk/citations?user=qCXW6sYAAAAJ&hl=zh-CN"><img src="img/google-logo.png"  height="40px" style="margin-bottom:-3px"></a>
-<!-- 					<a href="img/weichat.pdf"><img src="img/weichat.jpg"  height="40px" style="margin-bottom:-3px"></a> -->
-				</p>
-			</td>
-			<td>
-				<a href="https://Fei-Ni.github.io/"><img src="img/fei.jpg" alt="Fei-Ni" border="0" width="180"></a><br>
-			</td>
-		</tr><tr>
-	</tr>
-	</tbody>
-</table>
-	
-	
+    <!-- ===== NEWS ===== -->
+    <h2>News</h2>
+    <ul class="news" id="news-list">
+      <li><span class="date">2026.05</span><span>One paper accepted to <em>ICML 2026</em>.</span></li>
+      <li><span class="date">2026.02</span><span>One paper accepted to <em>CVPR 2026</em>.</span></li>
+      <li><span class="date">2026.02</span><span>Awarded the Marie Skłodowska-Curie Actions Postdoctoral Fellowship (MSCA PF 2025).</span></li>
+      <li><span class="date">2026.01</span><span>Three papers accepted to <em>ICLR 2026</em>.</span></li>
+      <li><span class="date">2025.08</span><span>Joined Imperial College London to start my postdoctoral research.</span></li>
+      <li class="more"><span class="date">2025.06</span><span>One paper accepted to <em>ICCV 2025</em>.</span></li>
+      <li class="more"><span class="date">2025.05</span><span>One paper accepted to <em>ACL 2025</em>.</span></li>
+      <li class="more"><span class="date">2025.01</span><span>One paper accepted to <em>WWW 2025</em> (Oral).</span></li>
+      <li class="more"><span class="date">2024.12</span><span>One paper accepted to <em>AAAI 2025</em>.</span></li>
+      <li class="more"><span class="date">2024.09</span><span>Three papers accepted to <em>NeurIPS 2024</em>.</span></li>
+      <li class="more"><span class="date">2024.05</span><span>One paper accepted to <em>ICML 2024</em>.</span></li>
+      <li class="more"><span class="date">2024.02</span><span>One paper accepted to <em>CVPR 2024</em>.</span></li>
+      <li class="more"><span class="date">2024.01</span><span>One paper accepted to <em>ICLR 2024</em>.</span></li>
+      <li class="more"><span class="date">2023.04</span><span>Two papers accepted to <em>ICML 2023</em> (one Oral).</span></li>
+      <li class="more"><span class="date">2023.01</span><span>One paper accepted to <em>ICLR 2023</em>.</span></li>
+      <li class="more"><span class="date">2022.11</span><span>One paper accepted to <em>AAAI 2022</em>.</span></li>
+      <li class="more"><span class="date">2022.09</span><span>One paper accepted to <em>NeurIPS 2022</em>.</span></li>
+      <li class="more"><span class="date">2021.05</span><span>One paper accepted to <em>KDD 2021</em>.</span></li>
+      <li class="more"><span class="date">2021.12</span><span>Won <strong>Bronze Prize</strong> in the ML4CO Competition at <em>NeurIPS 2021</em>.</span></li>
+    </ul>
+    <button class="news-toggle" id="news-toggle" aria-expanded="false">Show all news ▾</button>
 
+    <!-- ===== SELECTED PUBLICATIONS ===== -->
+    <h2>Selected Publications<span class="small"><a href="https://scholar.google.com.hk/citations?user=qCXW6sYAAAAJ&hl=zh-CN">Google Scholar ↗</a></span></h2>
+    <p style="color: var(--muted); font-size: 0.9rem; margin: 4px 0 14px;">* denotes equal contribution.</p>
 
-
-
-	  
-     
-      <h2 >News</h2>
-    <div id = "news-content" style="margin-top: 15px">
-    	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2025.06</span>, one paper is accepted to <strong><i>ICCV'25</i></strong>.</li>
-    	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2025.05</span>, one paper is accepted to <strong><i>ICML'25</i></strong>.</li>
-    	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2025.05</span>, one paper is accepted to <strong><i>ACL'25</i></strong>.</li>
-    	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2025.01</span>, one paper is accepted to <strong><i>WWW'25</i></strong>.</li>
-    	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2024.11</span>, one paper is accepted to <strong><i>AAAI'25</i></strong>.</li>
-    	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2024.09</span>, three papers is accepted to <strong><i>NeurIPS'24</i></strong>.</li>
-    	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2024.05</span>, one paper is accepted to <strong><i>ICML'24</i></strong>.</li>
-		<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2024.02</span>, one paper is accepted to <strong><i>CVPR'24</i></strong>.</li>
-		<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2024.01</span>, one paper is accepted to <strong><i>ICLR'24</i></strong>.</li>
-      <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2023.04</span>, two papers are accepted to <strong><i>ICML'23</i></strong>.</li>
-<!--      <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2022.04.08</span>, I was invited as a Reviewer for <strong><i>NeurIPS'23</i></strong>.</li>-->
-      <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2023.01</span>, one paper is accepted to <strong><i>ICLR'23</i></strong>.</li>
-	  <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2022.11</span>, one paper is accepted to <strong><i>AAAI'23</i></strong>.</li>
-      <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2022.09</span>, one paper is accepted to <strong><i>NeurIPS'22</i></strong>.</li>
-<!--      <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2021.09.24</span>, I gave a talk in RLChina.</li>-->
-      <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2021.05</span>, one paper is accepted to <strong><i>KDD'21</i></strong>.</li>
-
-
-<!--       <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2019.09.01</span>, I start my Ph.D study in EIC at <strong>HUST</strong>.</li>
-      <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2019.01.09</span>, one paper is accepted to <strong><i>Information Sciences (INS)</i></strong>.</li>
-      <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2018.10.10</span>, one paper is accepted to <strong><i>ACTA AUTOMATICA SINICA</i></strong>. </li> -->
+    <div class="pub featured">
+      <img class="thumb" src="img/SemanticVLA.png" alt="SemanticVLA">
+      <div>
+        <a class="title" href="https://github.com/Fei-Ni/SemanticVLA_Offcial">SemanticVLA: Towards Semantic Reasoning over Action Memorization via Synergistic Explicit Trace and Latent Action Planning</a>
+        <div class="authors"><span class="me">Fei Ni</span>, Zhuo Chen, Yifu Yuan, Zibin Dong, Xianze Yao, Shan Luo, Jianye Hao, Jiankang Deng, Stefanos Zafeiriou.</div>
+        <div class="venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>), 2026.</div>
+        <div class="links">
+          <a href="https://github.com/Fei-Ni/SemanticVLA_Offcial/raw/main/assets/SemanticVLA_CVPR2026.pdf">PDF</a>
+          <a href="https://github.com/Fei-Ni/SemanticVLA_Offcial">Code</a>
+          <a href="https://huggingface.co/collections/spikefly/semanticvla-model-zoo">Models</a>
+          <a href="https://huggingface.co/collections/spikefly/semanticvla-datasets">Dataset</a>
+        </div>
+      </div>
     </div>
-     
- <tr><tr><tr><tr>
-<div style="margin-top: 10px"></div>
-    <h2>Publications <a href="https://scholar.google.com.hk/citations?user=qCXW6sYAAAAJ&hl=zh-CN">(Google Scholar)</a> </h2>
-<!--<p><a href="https://scholar.google.com/citations?hl=en&user=botczdcAAAAJ">My Google Scholar</a></p>-->
-	 
-<!--<table id="tbPublications" width="100%">
-	<tbody>
-<h3 style="color: red">Preprints</h3>
-		
-   <tr>	
-		<td width="206">
-		<img src="img/TransZero-TPAMI.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td><a href="TransZero-pp/TransZero-pp.html" target="_blank">TransZero++: Cross Attribute-guided Transformer for Zero-Shot Learning.</a><br>
-		<p ><strong>Shiming Chen</strong>, Ziming Hong, Guo-Sen Xie, Jian Zhao, Xinge You, Shuicheng Yan, Ling Shao.</p>
-        <p class="post-date" style="margin-top: -10px" ><i>arXiv preprint arXiv: 2111.04254</i>, 2021. <strong>
-		[<a href="TransZero-pp/TransZero-pp.html">Project Page</a>][<a href="http://arxiv.org/abs/2112.08643">arXiv</a>]
-		[<a href="https://github.com/Fei-Ni/TransZero_pp">Code</a>]</strong>
-		</p>		
-	 <p style="margin-top: -11px"><span style="color:Green">Submitted to <i>IEEE Transactions Pattern Analysis and Machine Intelligence (<strong> TPAMI </strong>)</i> (Minor Revision)</span></p>
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    
- </tbody>
-</table>-->
-	      
-<table id="tbPublications" width="100%">
-<tbody>
-<h3 style="color: red">Conference Papers </h3>
 
-
-<tr>
-
-		<td width="206">
-		<img src="img/RoboAnnotateX.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td> <a href="" target="_blank"> RoboAnnotatorX: A Comprehensive and Universal Annotation Framework for Accurate Understanding of Long-horizon Robot Demonstration.</a>
-<!-- 			<strong>[<a href="https://proceedings.neurips.cc/paper/2021/file/8b0d268963dd0cfb808aac48a549829f-Paper.pdf">PDF</a>]
-				[<a href="https://arxiv.org/abs/2109.15163">arXiv</a>]
-				[<a href="https://github.com/shiming-chen/HSVA">Code</a>]</strong><br> -->
-		 <p >Longxin Kou*, <strong>Fei Ni*</strong>, Jianye HAO, Peilong Han, Jinyi Liu, Haiqin Cui, Rui Liu, Yan Zheng.</p>
-       <p style="margin-top: -11px"><i>The Twentieth IEEE/CVF International Conference on Computer Vision (<strong>ICCV</strong>), 2025. <strong>(<span style="color:Burlywood">CCF-A</span>)</strong> </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-	<tr></tr>
-
-
-
-<tr>
-
-		<td width="206">
-		<img src="img/PERIA.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td> <a href="" target="_blank"> Peria: Perceive, reason, imagine, act via holistic language and vision planning for manipulation.</a>
-<!-- 			<strong>[<a href="https://proceedings.neurips.cc/paper/2021/file/8b0d268963dd0cfb808aac48a549829f-Paper.pdf">PDF</a>]
-				[<a href="https://arxiv.org/abs/2109.15163">arXiv</a>]
-				[<a href="https://github.com/shiming-chen/HSVA">Code</a>]</strong><br> -->
-		 <p ><strong>Fei Ni</strong>, Jianye Hao, Shiguang Wu, Longxin Kou, Yifu Yuan, Zibin Dong, Jinyi Liu, MingZhi Li, Yuzheng Zhuang, Yan Zheng.</p>
-       <p style="margin-top: -11px"><i>The Thirty-Eighth Annual Conference on Neural Information Processing Systems (<strong> NeurIPS </strong>), 2024. <strong>(<span style="color:Burlywood">CCF-A</span>)</strong> </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-	<tr></tr>
-
-
-<tr>
-
-		<td width="206">
-		<img src="img/kisa.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td> <a href="" target="_blank"> KISA: A Unified Keyframe Identifier and Skill Annotator for Long-Horizon Robotics Demonstrations.</a>
-<!-- 			<strong>[<a href="https://proceedings.neurips.cc/paper/2021/file/8b0d268963dd0cfb808aac48a549829f-Paper.pdf">PDF</a>]
-				[<a href="https://arxiv.org/abs/2109.15163">arXiv</a>]
-				[<a href="https://github.com/shiming-chen/HSVA">Code</a>]</strong><br> -->
-		 <p >Longxin Kou*, <strong>Fei Ni*</strong>, Yan Zheng, Jinyi Liu, Yifu Yuan, Zibin Dong, Jianye Hao.</p>
-       <p style="margin-top: -11px"><i>The Forty-first International Conference on Machine Learning (<strong> ICML </strong>), 2024. <strong>(<span style="color:Burlywood">CCF-A</span>)</strong> </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-	<tr></tr>
-
-
-
-<tr>
-
-		<td width="206">
-		<img src="img/cotdiffusion.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td> <a href="" target="_blank"> Generate Subgoal Images before Act: Unlocking the Chain-of-Thought Reasoning in Diffusion Model for Robot Manipulation with Multimodal Prompts.</a>
-<!-- 			<strong>[<a href="https://proceedings.neurips.cc/paper/2021/file/8b0d268963dd0cfb808aac48a549829f-Paper.pdf">PDF</a>]
-				[<a href="https://arxiv.org/abs/2109.15163">arXiv</a>]
-				[<a href="https://github.com/shiming-chen/HSVA">Code</a>]</strong><br> -->
-		 <p ><strong>Fei Ni</strong>, Jianye Hao, Shiguang Wu, Longxin Kou, Jiashun Liu, Yan Zheng, Bin Wang, Yuzheng Zhuang.</p>
-       <p style="margin-top: -11px"><i>The IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong> CVPR </strong>), 2024. <strong>(<span style="color:Burlywood">CCF-A</span>)</strong> </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-	<tr></tr>
-
-
-<tr>
-
-		<td width="206">
-		<img src="img/AlignDiff_main.svg" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td> <a href="" target="_blank"> AlignDiff: Aligning Diverse Human Preferences Via Behavior-customisable Diffusion Model.</a>
-<!-- 			<strong>[<a href="https://proceedings.neurips.cc/paper/2021/file/8b0d268963dd0cfb808aac48a549829f-Paper.pdf">PDF</a>]
-				[<a href="https://arxiv.org/abs/2109.15163">arXiv</a>]
-				[<a href="https://github.com/shiming-chen/HSVA">Code</a>]</strong><br> -->
-		 <p >Zibin Dong , Yifu Yuan, Jianye Hao, <strong>Fei Ni</strong>, Yao Mu, Yan Zheng, Yujing Hu, Tangjie Lv, Changjie Fan, Zhipeng Hu.</p>
-       <p style="margin-top: -11px"><i>The 12th International Conference on Learning Representations (<strong> ICLR </strong>), 2024.  </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-	<tr></tr>
-
-
-	
-<tr>
-	
-		<td width="206">
-		<img src="img/ICML23b.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td> <a href="https://arxiv.org/abs/2302.01877" target="_blank"> AdaptDiffuser: Diffusion Models as Adaptive Self-evolving Planners.</a>
-			<strong>
-				[<a href="https://arxiv.org/abs/2302.01877">arXiv</a>]
-				[<a href="https://adaptdiffuser.github.io/">webpage</a>]
-			</strong><br>
-		 <p >Zhixuan Liang, Yao Mu, Mingyu Ding, <strong>Fei Ni</strong>, Masayoshi Tomizuka, Ping Luo.</p>
-       <p style="margin-top: -11px"><i>The Fortieth International Conference on Machine Learning (<strong> ICML </strong>), Oral, 2023. <strong>(<span style="color:Burlywood">CCF-A</span>)</strong> </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-	<tr></tr>	
-
-
-<tr>
-	
-		<td width="206">
-		<img src="img/ICML23a.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td> <a href="https://metadiffuser.github.io/" target="_blank"> MetaDiffuser: Diffusion Model as Conditional Planner for Offline Meta-RL.</a>
-			<strong>
-				<!-- [<a href="https://arxiv.org/abs/2302.01877">arXiv</a>] -->
-				[<a href="https://metadiffuser.github.io/">webpage</a>]
-			</strong><br>
-		 <p ><strong>Fei Ni</strong>, Jianye Hao, Yao Mu, Yifu Yuan, Yan Zheng, Bin Wang, Zhixuan Liang.</p>
-       <p style="margin-top: -11px"><i>The Fortieth International Conference on Machine Learning (<strong> ICML </strong>), 2023. <strong>(<span style="color:Burlywood">CCF-A</span>)</strong> </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-	<tr></tr>	
-
-<tr>
-	
-		<td width="206">
-		<img src="img/ICLR23.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td> <a href="hhttps://arxiv.org/abs/2210.00498" target="_blank"> EUCLID: Towards Efficient Unsupervised Reinforcement Learning with Multi-choice Dynamics Model.</a>
-			<strong>
-				[<a href="https://arxiv.org/abs/2210.00498">arXiv</a>]
-				[<a href="https://sites.google.com/view/euclid-rl/">webpage</a>]</strong><br>
-		 <p >Yifu Yuan, Jianye Hao, <strong>Fei Ni</strong>, Yao Mu, Yan Zheng, Yujing Hu, Jinyi Liu, Yingfeng Chen, Changjie Fan.</p>
-       <p style="margin-top: -11px"><i>The 11th International Conference on Learning Representations (<strong> ICLR </strong>), 2023.  </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-	<tr></tr>	
-
-   
-	    
-<tr>
-	
-		<td width="206">
-		<img src="img/AAAI22.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td> <a href="http://rlchina.org/topic/631" target="_blank"> SplitNet: A Reinforcement Learning based Sequence Splitting Method for the MinMax Multiple Travelling Salesman Problem.</a>
-			<strong>
-				[<a href="http://rlchina.org/topic/631">talk</a>]
-				</strong><br>
-		 <p >Hebin Liang, Yi Ma, Zilin Cao, Tianyang Liu, <strong>Fei Ni</strong>, Zhigang Li, Jianye Hao.</p>
-       <p style="margin-top: -11px"><i>Thirty-Sixth AAAI Conference on Artificial Intelligence (<strong> AAAI </strong>), 2022. <strong>(<span style="color:Burlywood">CCF-A</span>)</strong> </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>	
-	
-<tr>
-
-		<td width="206">
-		<img src="img/NIPS22.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td> <a href="https://arxiv.org/abs/2210.04209" target="_blank"> DOMINO: Decomposed Mutual Information Optimization for Generalized Context in Meta-Reinforcement Learning.</a>
-			<strong>[<a href="https://arxiv.org/abs/2210.04209">arXiv</a>]
-				[<a href="https://sites.google.com/view/dominorl/">webpage</a>]</strong>
-		 <p >Yao Mu, Yuzheng Zhuang, <strong>Fei Ni</strong>, Bin Wang, Jianyu Chen, Jianye Hao, Ping Luo.</p>
-       <p style="margin-top: -11px"><i>Advances in Neural Information Processing Systems(<strong> NeurIPS </strong>), 2022, 35: 27563-27575 . <strong>(<span style="color:Burlywood">CCF-A</span>)</strong> </i></p>
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-
-  
-    <tr>	
-		<td width="206">
-		<img src="img/KDD21.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td><a href="https://dl.acm.org/doi/abs/10.1145/3447548.3467135" target="_blank">A Multi-Graph Attributed Reinforcement Learning based Optimization Algorithm for Large-scale Hybrid Flow Shop Scheduling Problem.</a>
-			<strong>
-				[<a href="https://dl.acm.org/doi/abs/10.1145/3447548.3467135">arXiv</a>]</strong><br>
-		<p ><strong>Fei Ni</strong>, Jianye Hao, Jiawen Lu, Xialiang Tong, Mingxuan Yuan, Jiahui Duan, Yi Ma, Kun He</p>
-	       <p style="margin-top: -11px"><i>Proceedings of the 27th ACM SIGKDD Conference on Knowledge Discovery & Data Mining (<strong> KDD </strong>), 2021: 3441-3451. <strong>(<span style="color:Burlywood">CCF-A</span>)</strong>
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-	
-
-</tbody>
-</table>
-		
-<table id="tbPublications" width="100%">
-<tbody>	
-<h3 style="color: red">Journal Papers</h3>
-
-<tr>	
-		<td width="206">
-		<img src="img/COR21.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td><a href="https://www.sciencedirect.com/science/article/pii/S0305054820302574" target="_blank">Adaptive simulated annealing with greedy search for the circle bin packing problem.</a>
-			<strong>
-		[<a href="https://www.sciencedirect.com/science/article/pii/S0305054820302574">Paper</a>]
-		</strong><br>
-		<p >Kun He, Kevin Tole, <strong>Fei Ni</strong>, Yong Yuan, Linyun Liao.</p>
-        <p class="post-date" style="margin-top: -10px" > 
-		</p>		
-	 <p style="margin-top: -11px"> <i>Computers & Operations Research (<strong> COR </strong>), in press, 2021. <strong>
-		 (<span style="color:Burlywood">SCI Q1, IF=5.159</span>)</strong></p>
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-	
-    <tr>	
-		<td width="206">
-		<img src="img/COR22.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td><a href="https://arxiv.org/abs/2108.03203" target="_blank">Adaptive simulated annealing with greedy search for the circle bin packing problem.</a>
-<strong>
-		[<a href="https://arxiv.org/abs/2108.03203">arXiv</a>]
-		</strong><br>
-		<p >Yong Yuan, Kevin Tole, <strong>Fei Ni</strong>, Kun He, Zhengda Xiong, Jinfa Liu.</p>
-	       <p style="margin-top: -11px"><i>Computers & Operations Research (<strong> COR </strong>), in press, 2022. <strong>
-		 (<span style="color:Burlywood">SCI Q1, IF=5.159</span>)</strong></p>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-    
-
-    
-	
-<!--     <tr>
-	
-		<td width="206">
-		<img src="img/INS19.jpg" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td> <a href="https://www.sciencedirect.com/science/article/pii/S0020025519300283?via%3Dihub" target="_blank"> Semi-Supervised Feature Learning for Improving Writer Identification.</a>
-			<strong>[<a href="https://github.com/Fei-Ni/Writer-Identification-WLSR">Code</a>]</strong><br>
-		 <p ><strong>Shiming Chen</strong>, Yisong Wang, Chin-Teng Lin, Weiping Ding, Zehong Cao.</p>
-        <p class="post-date" style="margin-top: -10px" ><i>Information Sciences (<strong> INS </strong>)</i>, 482:156-170, 2019. 
-		<strong>(<span style="color:Burlywood">SCI, IF=8.233</span>)</strong></p>
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-    <tr>
-		<td width="206">
-		<img src="img/ACTA18.jpg" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>		
-		<td><a href="http://www.cnki.net/kcms/doi/10.16383/j.aas.c180441.html" target="_blank"> A Robust Offline Writer Identification Method.</a>
-			<strong>[<a href="https://github.com/Fei-Ni/DLS-CNN">Code</a>]</strong><br>
-		<p><strong>Shiming Chen</strong>, Yisong Wang.</p>
-        <p class="post-date" style="margin-top: -10px" ><i>ACTA AUTOMATICA SINICA (自动化学报)</i>, 46(1):108-116, 2020.  
-		<strong>(<span style="color:Burlywood">In Chinese, CAA-A,CCF-A,卓越期刊</span>)</strong></p>
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr> -->
-
-</tbody>
-</table>
-	  
-	  
-		<h2><strong>Awards</strong></h2>
-		<ul style="padding-left: 20px; margin-top: 0;">
-			<li style="margin: 5px 0 0 0;"><span style="color:Red">2025.06</span>, <strong>Outstanding Ph.D Graduate of Tianjin University, 2024</strong>.</li>
-			<li style="margin: 5px 0 0 0;"><span style="color:Red">2024.10</span>, <strong>National Scholarship, 2024</strong>.</li>
-			<li style="margin: 5px 0 0 0;"><span style="color:Red">2021.06</span>, <strong>Outstanding Graduate of Huazhong University of Science and Technology, 2021</strong>.</li>
-			<li style="margin: 5px 0 0 0;"><span style="color:Red">2018.06</span>, <strong>Outstanding Undergraduate of Huazhong University of Science and Technology, 2018</strong>.</li>
-		</ul>
-   
-    <h2>Industrial Experience</h2>
-	<ul>
-	<li>
-		<div style="float:left; text-align:left">Noah Ark's Lab, Decision and Reasoning Lab, Huawei. </div> <div style="float:right; text-align:right">Aug. 2022 – </div><br>
-		Research Intern<br>
-		Topic: Reinforcement learning, Robotics Learning<br>
-	</li>
-        <li>
-		<div style="float:left; text-align:left">Noah Ark's Lab, Enterprise Intelligence Lab, Huawei.  </div> <div style="float:right; text-align:right">Jun. 2020 – Feb. 2021</div><br>
-		Research Intern<br>
-		Topic: Reinforcement learning, Scheduling Problem, Combinatorial Optimization<br>
-	</li> 
-	
-	</ul>  
-	 
-	 
-     <h2><strong>Academic Experience:Reviewer</strong></h2>
-   <div>	   
-	 <strong>Reviewers:</strong> ICML, NeurIPS, ICLR, CVPR, ICCV, AAAI, WACV, AMAAS, ACL, TNNLS, T-CYB.
+    <div class="pub featured">
+      <img class="thumb" src="img/EmbodiedR1.jpg" alt="Embodied-R1">
+      <div>
+        <a class="title" href="https://embodied-r1.github.io/">Embodied-R1: Reinforced Embodied Reasoning for General Robotic Manipulation</a>
+        <div class="authors">Yifu Yuan, Haiqin Cui, Yaoting Huang, Yibin Chen, <span class="me">Fei Ni</span>, Zibin Dong, Pengyi Li, Yan Zheng, Hongyao Tang, Jianye Hao.</div>
+        <div class="venue">International Conference on Learning Representations (<strong>ICLR</strong>), 2026.</div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2508.13998">arXiv</a>
+          <a href="https://embodied-r1.github.io/">Project</a>
+          <a href="https://github.com/pickxiguapi/Embodied-R1">Code</a>
+          <a href="https://huggingface.co/IffYuan/Embodied-R1-3B-v1">Model</a>
+        </div>
+      </div>
     </div>
-	
-	 
-     <h2>Invited Talks</h2> 		
-	<ul>
 
-	<li>
-		<div style="float:left; text-align:left; color:red"><strong>RLChina Seminar </strong></div> <div style="float:right; text-align:right">Dec. 2021</div><br> <strong>
-		<!-- <br> -->
-		<strong>Title</strong>: A Multi-Graph Attributed Reinforcement Learning based Optimization Algorithm for Large-scale Hybrid Flow Shop Scheduling Problem [<a href="http://rlchina.org/topic/294">Video</a>]<br>
-
-		
-	</li>
-
-	
-	</ul> 
-
-     
-	
-   
-	  
-	  
-	  
-    <!--
-    <div id="content-title" style="margin-top: 5px">
-      <h2><strong>Links to my mentors and friends</strong></h2>
-      <p style="margin-top: -10px">
-	<a href="https://www.uts.edu.au/staff/chin-teng.lin">Prof. Chin-Teng Lin</a>(UTS, Australia, <strong>IEEE Fellow</strong>),&nbsp; &nbsp;
-        <a href="https://www.researchgate.net/profile/Weiping_Ding2">Prof. Weiping Ding</a>(NTU, China),&nbsp; &nbsp;
-	<a href="https://czh513.github.io/">Prof. Zehong Cao</a>(UTS, Australia),&nbsp; &nbsp;
-	<a href="https://www.researchgate.net/profile/Yisong_Wang5">Prof. Yisong Wang</a>(GZU, China),&nbsp; &nbsp;
-        <a href="http://zdzheng.xyz/index.html">Dr. Zhedong Zheng</a>(UTS, Australia),&nbsp; &nbsp;
-	<a href="https://yaxingwang.github.io/">Dr. Yaxing Wang</a>(UAB, Span),&nbsp; &nbsp;
-	<a href="http://www5.cs.fau.de/en/our-team/christlein-vincent">Dr. Vicent Christlein</a>(FAU, Germany),&nbsp; &nbsp;
-
-      </p>
+    <div class="pub featured">
+      <img class="thumb" src="img/RoboAnnotateX.png" alt="RoboAnnotatorX">
+      <div>
+        <a class="title" href="https://roboannotatex.github.io/">RoboAnnotatorX: A Comprehensive and Universal Annotation Framework for Accurate Understanding of Long-horizon Robot Demonstration</a>
+        <div class="authors">Longxin Kou*, <span class="me">Fei Ni*</span>, Jianye Hao, Peilong Han, Jinyi Liu, Haiqin Cui, Rui Liu, Yan Zheng.</div>
+        <div class="venue">IEEE/CVF International Conference on Computer Vision (<strong>ICCV</strong>), 2025.</div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2311.17043">arXiv</a>
+          <a href="https://roboannotatex.github.io/">Project</a>
+          <a href="https://github.com/LongXinKou/RoboannotatorX">Code</a>
+          <a href="https://huggingface.co/koulx/roboannotatorx">Model</a>
+          <a href="https://huggingface.co/datasets/koulx/RoboX-VQA">Dataset</a>
+        </div>
+      </div>
     </div>
-    -->
-	  
-	  
-	  
 
-     <div id="footer">
-	<div id="footer-text"></div>
+    <div class="pub featured">
+      <img class="thumb" src="img/EmbodiedArena.png" alt="Embodied Arena">
+      <div>
+        <a class="title" href="https://www.embodied-arena.com/">Embodied Arena: A Comprehensive, Unified, and Evolving Evaluation Platform for Embodied AI</a>
+        <div class="authors"><span class="me">Fei Ni</span>, Min Zhang, Pengyi Li, Yifu Yuan, Lingfeng Zhang, Yuecheng Liu, Peilong Han, Longxin Kou, Shaojin Ma, et al., Jiankang Deng, Shan Luo, Shuqiang Jiang, Wei Pan, Yang Gao, Stefanos Zafeiriou, Jan Peters, Yuzheng Zhuang, Yingxue Zhang, Yan Zheng, Hongyao Tang, Jianye Hao.</div>
+        <div class="venue">arXiv preprint <strong>arXiv:2509.15273</strong>, 2025.</div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2509.15273">arXiv</a>
+          <a href="https://www.embodied-arena.com/#/">Project</a>
+          <a href="https://github.com/EmbodiedArena/embodied-arena">Code</a>
+        </div>
+      </div>
     </div>
-    <div id = "logo" style="margin-top: 10px; text-align:center">
-	    <div align="center" style="margin:auto;padding-top:10px">
-            <div style="width:12%">
-                <!-- <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=kKMhkSHMeApLgHGqTfk5xOrHScwhlrHiRwRbeYjigWg"></script> -->
-                <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=pMIs8eFYyntjMdS6h1SznOOz1_L70lOtUcv2kr1fkXQ"></script>
-            </div>
-           <br>
-        &copy; Fei Ni | <span style="color:Red">Last updated: Augst 01, 2022</span>
-            </div>
-     </div>     
-	
-   <!-- <div id = "logo" style="margin-top: 10px; text-align:center">
-    <a href="http://www.hust.edu.cn/"><img  src="img/HUST.jpg" height="65px"  /></a> 
-     <a href="http://www.gzu.edu.cn/"><img  src="img/GZU.jpg" height="65px" style="margin-left: 50px"/></a> -->
-    
 
-    
+    <div class="pub featured">
+      <img class="thumb" src="img/PERIA.png" alt="PERIA">
+      <div>
+        <a class="title" href="https://peria-for-robotics.github.io/">PERIA: Perceive, Reason, Imagine, Act via Holistic Language and Vision Planning for Manipulation</a>
+        <div class="authors"><span class="me">Fei Ni</span>, Jianye Hao, Shiguang Wu, Longxin Kou, Yifu Yuan, Zibin Dong, Jinyi Liu, MingZhi Li, Yuzheng Zhuang, Yan Zheng.</div>
+        <div class="venue">Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>), 2024.</div>
+        <div class="links">
+          <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/1f6af963e891e7efa229c24a1607fa7f-Paper-Conference.pdf">PDF</a>
+          <a href="https://openreview.net/forum?id=zw2K6LfFI9">OpenReview</a>
+          <a href="https://peria-for-robotics.github.io/">Project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub featured">
+      <img class="thumb" src="img/kisa.png" alt="KISA">
+      <div>
+        <a class="title" href="https://kisa-for-robotics.github.io/">KISA: A Unified Keyframe Identifier and Skill Annotator for Long-Horizon Robotics Demonstrations</a>
+        <div class="authors">Longxin Kou*, <span class="me">Fei Ni*</span>, Yan Zheng, Jinyi Liu, Yifu Yuan, Zibin Dong, Jianye Hao.</div>
+        <div class="venue">International Conference on Machine Learning (<strong>ICML</strong>), 2024.</div>
+        <div class="links">
+          <a href="https://openreview.net/pdf?id=oCI9gHocws">PDF</a>
+          <a href="https://kisa-for-robotics.github.io/">Project</a>
+          <a href="https://github.com/LongXinKou/KISA">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub featured">
+      <img class="thumb" src="img/cotdiffusion.png" alt="CoT-Diffusion">
+      <div>
+        <a class="title" href="https://openaccess.thecvf.com/content/CVPR2024/html/Ni_Generate_Subgoal_Images_before_Act_Unlocking_the_Chain-of-Thought_Reasoning_in_CVPR_2024_paper.html">Generate Subgoal Images before Act: Unlocking the Chain-of-Thought Reasoning in Diffusion Model for Robot Manipulation with Multimodal Prompts</a>
+        <div class="authors"><span class="me">Fei Ni</span>, Jianye Hao, Shiguang Wu, Longxin Kou, Jiashun Liu, Yan Zheng, Bin Wang, Yuzheng Zhuang.</div>
+        <div class="venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>), 2024.</div>
+        <div class="links">
+          <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Ni_Generate_Subgoal_Images_before_Act_Unlocking_the_Chain-of-Thought_Reasoning_in_CVPR_2024_paper.pdf">PDF</a>
+          <a href="https://openaccess.thecvf.com/content/CVPR2024/html/Ni_Generate_Subgoal_Images_before_Act_Unlocking_the_Chain-of-Thought_Reasoning_in_CVPR_2024_paper.html">CVF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub featured">
+      <img class="thumb" src="img/ICML23b.png" alt="AdaptDiffuser">
+      <div>
+        <a class="title" href="https://arxiv.org/abs/2302.01877">AdaptDiffuser: Diffusion Models as Adaptive Self-evolving Planners</a>
+        <div class="authors">Zhixuan Liang, Yao Mu, Mingyu Ding, <span class="me">Fei Ni</span>, Masayoshi Tomizuka, Ping Luo.</div>
+        <div class="venue">International Conference on Machine Learning (<strong>ICML</strong>), 2023. <span class="badge oral">Oral</span></div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2302.01877">arXiv</a>
+          <a href="https://adaptdiffuser.github.io/">Project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub featured">
+      <img class="thumb" src="img/ICML23a.png" alt="MetaDiffuser">
+      <div>
+        <a class="title" href="https://metadiffuser.github.io/">MetaDiffuser: Diffusion Model as Conditional Planner for Offline Meta-RL</a>
+        <div class="authors"><span class="me">Fei Ni</span>, Jianye Hao, Yao Mu, Yifu Yuan, Yan Zheng, Bin Wang, Zhixuan Liang.</div>
+        <div class="venue">International Conference on Machine Learning (<strong>ICML</strong>), 2023.</div>
+        <div class="links">
+          <a href="https://proceedings.mlr.press/v202/ni23a/ni23a.pdf">PDF</a>
+          <a href="https://arxiv.org/abs/2305.19923">arXiv</a>
+          <a href="https://metadiffuser.github.io/">Project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub featured">
+      <img class="thumb" src="img/KDD21.png" alt="KDD'21">
+      <div>
+        <a class="title" href="https://dl.acm.org/doi/abs/10.1145/3447548.3467135">A Multi-Graph Attributed Reinforcement Learning based Optimization Algorithm for Large-scale Hybrid Flow Shop Scheduling Problem</a>
+        <div class="authors"><span class="me">Fei Ni</span>, Jianye Hao, Jiawen Lu, Xialiang Tong, Mingxuan Yuan, Jiahui Duan, Yi Ma, Kun He.</div>
+        <div class="venue">ACM SIGKDD Conference on Knowledge Discovery &amp; Data Mining (<strong>KDD</strong>), 2021.</div>
+        <div class="links"><a href="https://dl.acm.org/doi/abs/10.1145/3447548.3467135">Paper</a></div>
+      </div>
+    </div>
+
+    <!-- ===== PUBLICATIONS ===== -->
+    <h2>Publications</h2>
+    <div class="publications" id="all-pubs">
+
+    <div class="year-header">2026</div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="https://arxiv.org/abs/2505.08548">From Seeing to Doing: Bridging Reasoning and Decision for Robotic Manipulation</a>
+        <div class="authors">Yifu Yuan, Haiqin Cui, Yibin Chen, Zibin Dong, <span class="me">Fei Ni</span>, Longxin Kou, Jinyi Liu, Pengyi Li, Yan Zheng, Jianye Hao.</div>
+        <div class="venue">International Conference on Learning Representations (<strong>ICLR</strong>), 2026.</div>
+        <div class="links"><a href="https://arxiv.org/abs/2505.08548">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="https://arxiv.org/abs/2407.09811">CellAgent: An LLM-Driven Multi-Agent Framework for Natural Language-Based Single-Cell Analysis</a>
+        <div class="authors">Yihang Xiao, Jinyi Liu, Yan Zheng, Shaoqing Jiao, Jianye Hao, Xiaohan Xie, Mingzhi Li, Ruitao Wang, <span class="me">Fei Ni</span>, Yuxiao Li, Zhen Wang, Xuequn Shang, Zhijie Bao, Changxiao Yang, Jiajie Peng.</div>
+        <div class="venue">International Conference on Learning Representations (<strong>ICLR</strong>), 2026.</div>
+        <div class="links"><a href="https://arxiv.org/abs/2407.09811">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="#">AFE-Master: Enhancing LLM-Driven Autonomous Feature Engineering with Domain-Specific Language Parsing and Guided Local Search</a>
+        <div class="authors">Hebin Liang, Jianye Hao, Jinyi Liu, Yi Ma, Zilin Cao, Jing Liang, Kun Shao, Zhaocheng Du, <span class="me">Fei Ni</span>, et al.</div>
+        <div class="venue">ACM Web Conference (<strong>WWW</strong>), 2026.</div>
+      </div>
+    </div>
+
+    <div class="year-header">2025</div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="https://www.embodied-arena.com/#/">Embodied Arena: A Comprehensive, Unified, and Evolving Evaluation Platform for Embodied AI</a>
+        <div class="authors"><span class="me">Fei Ni</span>, Min Zhang, Pengyi Li, Yifu Yuan, et al. (37 authors).</div>
+        <div class="venue">Embodied Arena Benchmark Technical Report, 2025.</div>
+        <div class="links"><a href="https://arxiv.org/abs/2509.15273">arXiv</a> <a href="https://www.embodied-arena.com/#/">Project</a> <a href="https://github.com/EmbodiedArena/embodied-arena">Code</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="#">RADAR: Robust Anomaly Detection And Recovery for Robot Manipulation</a>
+        <div class="authors"><span class="me">Fei Ni</span>, Rui Liu, Longxin Kou, Jianye Hao.</div>
+        <div class="venue">ICCV 2025 <strong>MMFM Workshop</strong>.</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="https://aclanthology.org/2025.acl-long.1539/">DualRAG: A Dual-Process Approach to Integrate Reasoning and Retrieval for Multi-Hop Question Answering</a>
+        <div class="authors">Rong Cheng, Jinyi Liu, Yan Zheng, <span class="me">Fei Ni</span>, Jiazhen Du, Hangyu Mao, Fuzheng Zhang, Bo Wang, Jianye Hao.</div>
+        <div class="venue">Annual Meeting of the Association for Computational Linguistics (<strong>ACL</strong>), 2025.</div>
+        <div class="links"><a href="https://aclanthology.org/2025.acl-long.1539/">Paper</a> <a href="https://arxiv.org/abs/2504.18243">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="#">SheetAgent: Towards a Generalist Agent for Spreadsheet Reasoning and Manipulation via Large Language Models</a>
+        <div class="authors">Yibin Chen, Yifu Yuan, Zeyu Zhang, Yan Zheng, Jinyi Liu, <span class="me">Fei Ni</span>, Jianye Hao, Hangyu Mao, Fuzheng Zhang.</div>
+        <div class="venue">ACM Web Conference (<strong>WWW</strong>), 2025. <span class="badge oral">Oral</span></div>
+        <div class="links"><a href="https://arxiv.org/abs/2403.03636">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="#">SWAMamba: A Sliding Window Attention Mamba Framework for Predicting Translation Elongation Rates</a>
+        <div class="authors">Xi Zeng, <span class="me">Fei Ni</span>, Shaoqing Jiao, Dazhi Lu, Jianye Hao, Jiajie Peng.</div>
+        <div class="venue">AAAI Conference on Artificial Intelligence (<strong>AAAI</strong>), 2025.</div>
+      </div>
+    </div>
+
+    <div class="year-header more">2024</div>
+
+    <div class="pub more">
+      <div>
+        <a class="title" href="#">AlignDiff: Aligning Diverse Human Preferences Via Behavior-Customisable Diffusion Model</a>
+        <div class="authors">Zibin Dong, Yifu Yuan, Jianye Hao, <span class="me">Fei Ni</span>, Yao Mu, Yan Zheng, Yujing Hu, Tangjie Lv, Changjie Fan, Zhipeng Hu.</div>
+        <div class="venue">International Conference on Learning Representations (<strong>ICLR</strong>), 2024.</div>
+        <div class="links"><a href="https://arxiv.org/abs/2310.02054">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="pub more">
+      <div>
+        <a class="title" href="https://arxiv.org/abs/2406.09509">CleanDiffuser: An Easy-to-use Modularized Library for Diffusion Models in Decision Making</a>
+        <div class="authors">Zibin Dong, Yifu Yuan, Jianye Hao, <span class="me">Fei Ni</span>, Yi Ma, Pengyi Li, Yan Zheng.</div>
+        <div class="venue">Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>) Datasets &amp; Benchmarks Track, 2024.</div>
+        <div class="links"><a href="https://arxiv.org/abs/2406.09509">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="pub more">
+      <div>
+        <a class="title" href="https://arxiv.org/abs/2401.15443">DiffuserLite: Towards Real-time Diffusion Planning</a>
+        <div class="authors">Zibin Dong, Jianye Hao, Yifu Yuan, <span class="me">Fei Ni</span>, Yitian Wang, Pengyi Li, Yan Zheng.</div>
+        <div class="venue">Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>), 2024.</div>
+        <div class="links"><a href="https://arxiv.org/abs/2401.15443">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="year-header more">2023</div>
+
+    <div class="pub more">
+      <div>
+        <a class="title" href="https://arxiv.org/abs/2210.00498">EUCLID: Towards Efficient Unsupervised Reinforcement Learning with Multi-choice Dynamics Model</a>
+        <div class="authors">Yifu Yuan, Jianye Hao, <span class="me">Fei Ni</span>, Yao Mu, Yan Zheng, Yujing Hu, Jinyi Liu, Yingfeng Chen, Changjie Fan.</div>
+        <div class="venue">International Conference on Learning Representations (<strong>ICLR</strong>), 2023.</div>
+        <div class="links"><a href="https://arxiv.org/abs/2210.00498">arXiv</a> <a href="https://sites.google.com/view/euclid-rl/">Project</a></div>
+      </div>
+    </div>
+
+    <div class="year-header more">2022</div>
+
+    <div class="pub more">
+      <div>
+        <a class="title" href="https://arxiv.org/abs/2210.04209">DOMINO: Decomposed Mutual Information Optimization for Generalized Context in Meta-Reinforcement Learning</a>
+        <div class="authors">Yao Mu, Yuzheng Zhuang, <span class="me">Fei Ni</span>, Bin Wang, Jianyu Chen, Jianye Hao, Ping Luo.</div>
+        <div class="venue">Advances in Neural Information Processing Systems (<strong>NeurIPS</strong>), 2022.</div>
+        <div class="links"><a href="https://arxiv.org/abs/2210.04209">arXiv</a> <a href="https://sites.google.com/view/dominorl/">Project</a></div>
+      </div>
+    </div>
+
+    <div class="pub more">
+      <div>
+        <a class="title" href="http://rlchina.org/topic/631">SplitNet: A Reinforcement Learning based Sequence Splitting Method for the MinMax Multiple Travelling Salesman Problem</a>
+        <div class="authors">Hebin Liang, Yi Ma, Zilin Cao, Tianyang Liu, <span class="me">Fei Ni</span>, Zhigang Li, Jianye Hao.</div>
+        <div class="venue">AAAI Conference on Artificial Intelligence (<strong>AAAI</strong>), 2022.</div>
+        <div class="links"><a href="http://rlchina.org/topic/631">Talk</a></div>
+      </div>
+    </div>
+
+    <div class="year-header more">2021</div>
+
+    <div class="pub more">
+      <div>
+        <a class="title" href="https://www.sciencedirect.com/science/article/pii/S0305054820302574">Adaptive Simulated Annealing with Greedy Search for the Circle Bin Packing Problem</a>
+        <div class="authors">Kun He, Kevin Tole, <span class="me">Fei Ni</span><sup>†</sup>, Yong Yuan, Linyun Liao. &nbsp;<span style="color: var(--muted); font-size: 0.85rem;">(<sup>†</sup>corresponding author)</span></div>
+        <div class="venue">Computers &amp; Operations Research (<strong>COR</strong>), 2021.</div>
+        <div class="links"><a href="https://www.sciencedirect.com/science/article/pii/S0305054820302574">Paper</a> <a href="https://arxiv.org/abs/2108.03203">arXiv</a></div>
+      </div>
+    </div>
+
+    </div><!-- /.publications -->
+    <button class="toggle-btn" data-target="all-pubs" aria-expanded="false">Show all publications ▾</button>
+
+    <!-- ===== PREPRINTS ===== -->
+    <h2>Preprints</h2>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="#">UniForce: A Unified Latent Force Model for Robot Manipulation with Diverse Tactile Sensors</a>
+        <div class="authors">Zhuo Chen, <span class="me">Fei Ni</span>, Kaiyao Luo, Zhiyuan Wu, Xuyang Zhang, et al.</div>
+        <div class="venue">arXiv preprint, 2026.</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="#">ActionCodec: What Makes for Good Action Tokenizers</a>
+        <div class="authors">Zibin Dong, Yicheng Liu, Shiduo Zhang, Baijun Ye, Yifu Yuan, <span class="me">Fei Ni</span>, et al.</div>
+        <div class="venue">arXiv preprint, 2026.</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div>
+        <a class="title" href="https://arxiv.org/abs/2505.10105">EmbodiedMAE: A Unified 3D Multi-Modal Representation for Robot Manipulation</a>
+        <div class="authors">Zibin Dong, <span class="me">Fei Ni</span>, Yifu Yuan, Yinchuan Li, Jianye Hao.</div>
+        <div class="venue">arXiv preprint <strong>arXiv:2505.10105</strong>, 2025.</div>
+        <div class="links"><a href="https://arxiv.org/abs/2505.10105">arXiv</a></div>
+      </div>
+    </div>
+
+    <!-- ===== EDUCATION ===== -->
+    <h2>Education &amp; Profession</h2>
+    <ul class="timeline">
+      <li>
+        <span class="when">Aug. 2025 – Present</span>
+        <span class="what"><strong>Imperial College London</strong><div class="sub">Postdoctoral Research Associate, MSCA Fellow · with <a href="https://www.imperial.ac.uk/people/s.zafeiriou">Prof. Stefanos Zafeiriou</a>.<br>Research Interests: Embodied Robotics, Multimodal Learning.</div></span>
+      </li>
+      <li>
+        <span class="when">Sept. 2021 – June 2025</span>
+        <span class="what"><strong>Tianjin University</strong><div class="sub">Ph.D. in Electronics Information Science · with <a href="http://www.icdai.org/">Prof. Jianye Hao</a>.<br>Research Interests: Embodied Intelligence, Multimodal Large Models.</div></span>
+      </li>
+      <li>
+        <span class="when">Sept. 2018 – June 2021</span>
+        <span class="what"><strong>Huazhong University of Science and Technology</strong><div class="sub">M.S. in Computer Science · with <a href="http://faculty.hust.edu.cn/hekun/en/">Prof. Kun He</a>.<br>Research Interests: Combinatorial Optimization, Reinforcement Learning.</div></span>
+      </li>
+      <li>
+        <span class="when">Sept. 2014 – June 2018</span>
+        <span class="what"><strong>Huazhong University of Science and Technology</strong><div class="sub">B.S. in Physics &amp; B.S. in Computer Science (dual degree).</div></span>
+      </li>
+    </ul>
+
+    <!-- ===== AWARDS ===== -->
+    <h2>Honors &amp; Awards</h2>
+    <ul class="timeline" id="awards-list">
+      <li><span class="when">2026</span><span class="what"><strong>Marie Skłodowska-Curie Actions Postdoctoral Fellowship</strong> (MSCA PF 2025).</span></li>
+      <li><span class="when">2025</span><span class="what"><strong>UKRI AI Research Resource (AIRR) Academic Compute Grant</strong>, UK Research and Innovation.</span></li>
+      <li><span class="when">2025</span><span class="what"><strong>Outstanding Graduate of Tianjin University</strong>.</span></li>
+      <li><span class="when">2025</span><span class="what"><strong>Outstanding Doctoral Dissertation of Tianjin University</strong>.</span></li>
+      <li><span class="when">2024</span><span class="what"><strong>Distinguished Doctoral Engineering Innovation Award</strong>, Tianjin University.</span></li>
+      <li class="more"><span class="when">2024</span><span class="what"><strong>National Scholarship</strong>.</span></li>
+      <li class="more"><span class="when">2023</span><span class="what"><strong>Outstanding Internship Award</strong>, 2012 Lab of HUAWEI.</span></li>
+      <li class="more"><span class="when">2022</span><span class="what"><strong>Silver Medal</strong>, Tianjin "Internet+" Innovation &amp; Entrepreneurship Competition.</span></li>
+      <li class="more"><span class="when">2021</span><span class="what"><strong>Bronze Prize</strong>, Machine Learning for Combinatorial Optimization (ML4CO) Competition, NeurIPS 2021.</span></li>
+      <li class="more"><span class="when">2018, 2021</span><span class="what"><strong>Outstanding Graduate of Huazhong University of Science and Technology</strong>.</span></li>
+    </ul>
+    <button class="toggle-btn" data-target="awards-list" aria-expanded="false">Show all awards ▾</button>
+
+    <!-- ===== TALKS ===== -->
+    <h2>Invited Talks</h2>
+    <ul class="timeline" id="talks-list">
+      <li>
+        <span class="when">2025</span>
+        <span class="what"><strong>Department of Computing, Imperial College London</strong><div class="sub">Vision-Language-Action Models for Long-Horizon Embodied Robotics.</div></span>
+      </li>
+      <li>
+        <span class="when">2025</span>
+        <span class="what"><strong>RLChina 2025</strong><div class="sub">Embodied Arena: A Comprehensive Platform for Embodied AI.</div></span>
+      </li>
+      <li>
+        <span class="when">2025</span>
+        <span class="what"><strong>MLNLP 2025</strong><div class="sub">Towards Complex and Long-horizon Manipulation Scenarios.</div></span>
+      </li>
+      <li>
+        <span class="when">2024</span>
+        <span class="what"><strong>LLM4RL Workshop @ AAAI 2024</strong> (Virtual Oral)<div class="sub">Generate Subgoal Images before Act: Unlocking the Chain-of-Thought Reasoning in Diffusion Model for Robot Manipulation with Multimodal Prompts.</div></span>
+      </li>
+      <li class="more">
+        <span class="when">2023</span>
+        <span class="what"><strong>Distributed AI (DAI) Conference 2023, Singapore</strong> (Oral)<div class="sub">Diffusion meets Decision Making: Towards better planning for robotics.</div></span>
+      </li>
+      <li class="more">
+        <span class="when">2023</span>
+        <span class="what"><strong>RLChina Seminar</strong><div class="sub">KISA: A Unified Keyframe Identifier and Skill Annotator for Long-Horizon Robotics Demonstrations.</div></span>
+      </li>
+      <li class="more">
+        <span class="when">2023</span>
+        <span class="what"><strong>Huawei Summit at the Pinnacle Forum</strong><div class="sub">Multimodal Technologies in Robotics: Current Applications, Future Directions and Strategic Vision.</div></span>
+      </li>
+      <li class="more">
+        <span class="when">2022</span>
+        <span class="what"><strong>AI Time Youth PhD Talk</strong><div class="sub">MetaDiffuser: Diffusion as Conditional Planner for Offline Meta-RL.</div></span>
+      </li>
+      <li class="more">
+        <span class="when">2022</span>
+        <span class="what"><strong>RLChina Seminar</strong><div class="sub">A Multi-Graph Attributed Reinforcement Learning based Optimization Algorithm for Large-scale Hybrid Flow Shop Scheduling Problem. <a href="http://rlchina.org/topic/294">[Video]</a></div></span>
+      </li>
+    </ul>
+    <button class="toggle-btn" data-target="talks-list" aria-expanded="false">Show all talks ▾</button>
+
+    <!-- ===== SERVICE ===== -->
+    <h2>Academic Service</h2>
+    <p style="margin: 4px 0;"><strong>Conference Reviewer:</strong> CVPR, ICML, NeurIPS, ICLR, AAAI, AISTATS, AAMAS, ICCV.</p>
+    <p style="margin: 4px 0;"><strong>Journal Reviewer:</strong> TPAMI, IEEE T-RO, Pattern Recognition, IEEE TNNLS, KBS, IEEE TCYB, JAAMAS.</p>
+
+    <footer>
+      &copy; Fei Ni · Last updated: June 2026 · <a href="https://github.com/Fei-Ni/Fei-Ni.github.io">source</a>
+    </footer>
   </div>
 
-</body></html>
+  <script>
+    (function() {
+      // News toggle (legacy id)
+      var newsList = document.getElementById('news-list');
+      var newsBtn = document.getElementById('news-toggle');
+      if (newsBtn && newsList) {
+        newsBtn.addEventListener('click', function() {
+          var expanded = newsList.classList.toggle('expanded');
+          newsBtn.textContent = expanded ? 'Show less ▴' : 'Show all news ▾';
+          newsBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        });
+      }
+
+      // Generic data-target toggles (awards, talks, publications, ...)
+      document.querySelectorAll('.toggle-btn[data-target]').forEach(function(btn) {
+        var target = document.getElementById(btn.getAttribute('data-target'));
+        if (!target) return;
+        var labelShow = btn.textContent;
+        var labelHide = labelShow.replace('Show all', 'Show less').replace('▾', '▴');
+        btn.addEventListener('click', function() {
+          var expanded = target.classList.toggle('expanded');
+          btn.textContent = expanded ? labelHide : labelShow;
+          btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
